@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">IdiomasVideos</string>
     <string name="tituloTopBar">Idiomas Y Videos</string>
+    <string name="LoremIpsumTextoPrueba">Lorem Ipsum en español:
+        Lorem ipsum dolor sit amet consectetur adipiscing elit tortor magnis dictum integer montes nisi, parturient quisque metus torquent at vehicula faucibus aenean erat conubia varius. Class platea curae curabitur eu vulputate neque est porttitor, sapien ad consequat conubia etiam ligula nullam, vel dui volutpat dignissim nunc hac fermentum. Suspendisse dis tellus condimentum sollicitudin est primis sociosqu, eros a penatibus netus rhoncus venenatis, magna per erat nunc suscipit libero. Lobortis habitant ut ac lectus urna sem morbi velit, magna rutrum litora primis nisl nulla placerat semper, platea enim quis facilisis at integer fames.
+Aliquam henderit varius pellentesque sagittis curae ultrices ornare mollis erat auctor nisi posuere risus leo sociis scelerisque, habitant rutrum mi integer quis malesuada ante tempor massa quisque nullam id turpis fermentum laoreet. Ut diam nascetur pulvinar hac hendrerit platea suspendisse eget iaculis aptent odio tortor velit, orci sed eleifend magnis viverra conubia sapien netus morbi egestas semper. Augue fames leo nec semper parturient quam auctor blandit ullamcorper, at lobortis senectus ornare tristique luctus hac hendrerit, nisl volutpat netus taciti malesuada felis eu porttitor. Porta a ante potenti eget dui habitant condimentum fusce, erat integer facilisis montes luctus maecenas ac semper neque, hendrerit rutrum etiam faucibus ad felis posuere.
+    </string>
 </resources>
