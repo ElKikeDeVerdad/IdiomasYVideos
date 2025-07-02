@@ -38,6 +38,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.idiomasvideos.R
+import com.example.idiomasvideos.logica.BodyTextoPruebaScreen
+import com.example.idiomasvideos.logica.fondoBodyPrueba
+import com.example.idiomasvideos.logica.imagenBodyPrueba
+import com.example.idiomasvideos.logica.textoBodyPrueba
+import com.example.idiomasvideos.logica.tituloBodyPrueba
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -139,6 +144,14 @@ fun AppScaffold(
             }
         }
     ) { padding ->
+BodyTextoPruebaScreen(
+    modifier = Modifier
+        .padding(padding),
+    fondoBodyPrueba = {fondoBodyPrueba()},
+    tituloBodyPrueba = {tituloBodyPrueba()},
+    textoBodyPrueba = {textoBodyPrueba()},
+    imagenBodyPrueba = {imagenBodyPrueba()}
+)
         content(padding)
     }
 }
