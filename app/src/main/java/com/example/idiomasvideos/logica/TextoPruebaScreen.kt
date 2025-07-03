@@ -59,7 +59,6 @@ fun tituloBodyPrueba() {
         fontWeight = FontWeight.W400,
         color = Color.Gray
     )
-
 }
 
 @Composable
