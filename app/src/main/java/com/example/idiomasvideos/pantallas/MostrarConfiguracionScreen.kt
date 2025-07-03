@@ -22,7 +22,7 @@ fun MostrarConfiguracionScreen (
                 modifier = modifier
                     .fillMaxSize()
                     .padding(padding),)
-            content(padding)
+            //content(padding)
         }
     )
 }

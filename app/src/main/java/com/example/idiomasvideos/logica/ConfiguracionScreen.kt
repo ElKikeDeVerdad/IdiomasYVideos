@@ -33,11 +33,11 @@ fun ConfiguracionScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        fondoConfigurationScreen()
+        //fondoConfigurationScreen()
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .then(modifier)
+                //.then(modifier)
         ) {
             Row(
                 modifier = Modifier
