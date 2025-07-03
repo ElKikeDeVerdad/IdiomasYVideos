@@ -33,6 +33,7 @@ fun BodyTextoPruebaScreen(
             .fillMaxSize()
     ) {
         fondoBodyPrueba()
+
         Column(
             modifier = Modifier
                 .fillMaxSize()

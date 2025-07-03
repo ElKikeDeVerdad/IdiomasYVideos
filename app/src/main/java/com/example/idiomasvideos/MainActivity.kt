@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.idiomasvideos.pantallas.MostrarConfiguracionScreen
 import com.example.idiomasvideos.pantallas.MostrarHomeScreen
 import com.example.idiomasvideos.pantallas.MostrarTextoPruebaScreen
 import com.example.idiomasvideos.ui.theme.IdiomasVideosTheme
@@ -26,7 +27,10 @@ class MainActivity : ComponentActivity() {
                         navController = rememberNavController(),
                         modifier = Modifier.padding(innerPadding)
                     )
-                    MostrarTextoPruebaScreen(
+                   // MostrarTextoPruebaScreen(
+                   //     modifier = Modifier.padding((innerPadding))
+                   // )
+                    MostrarConfiguracionScreen(
                         modifier = Modifier.padding((innerPadding))
                     )
                 }
@@ -38,7 +42,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun PreviewCopiarAEjercicioIdiomasVideos() {
         IdiomasVideosTheme {
-            MostrarTextoPruebaScreen(modifier = Modifier)
+            //MostrarTextoPruebaScreen(modifier = Modifier)
+            MostrarConfiguracionScreen(modifier = Modifier)
         }
     }
 
