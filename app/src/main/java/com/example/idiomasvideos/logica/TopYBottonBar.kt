@@ -31,13 +31,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.idiomasvideos.R
+import com.example.idiomasvideos.navegacion.Rutas
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
     showBottomBar: Boolean = true,
     content: @Composable (PaddingValues) -> Unit = {},
+    navController: NavController
+
 ) {
     Scaffold(
         topBar = {
@@ -98,7 +102,7 @@ fun AppScaffold(
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
                                 IconButton(
-                                    onClick = { /* acción */ }) {
+                                    onClick = { navController.navigate(Rutas.HOME)}) {
                                     Icon(
                                         Icons.Default.Home,
                                         contentDescription = "Inicio",
@@ -106,7 +110,7 @@ fun AppScaffold(
                                             .size(40.dp)
                                     ) }
                                 IconButton(
-                                    onClick = { /* acción */ }) {
+                                    onClick = { navController.navigate(Rutas.TEXTOPRUEBASCREEN) }) {
                                     Icon(
                                         Icons.Default.Favorite,
                                         contentDescription = "Favoritos",
@@ -114,7 +118,7 @@ fun AppScaffold(
                                             .size(40.dp)
                                     ) }
                                 IconButton(
-                                    onClick = {/* acción */ }) {
+                                    onClick = {navController.navigate(Rutas.CONFIGURACION) }) {
                                     Icon(
                                         Icons.Default.Settings,
                                         contentDescription = "Configuracion",

@@ -19,11 +19,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.idiomasvideos.R
 import com.example.idiomasvideos.logica.Helper.UsarBotonSwitch
-
+//A diferencia de TextoPruebaScreen, aqui no pondre los parametros de las funciones ya que no van a cambiar
 @Composable
 fun ConfiguracionScreen(
-    modifier: Modifier = Modifier,
-    tituloConfigurationScreen: @Composable () -> Unit = {}
+    modifier: Modifier = Modifier
 ){
     Box(
         modifier = Modifier

@@ -4,23 +4,22 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.example.idiomasvideos.logica.AppScaffold
 import com.example.idiomasvideos.logica.ConfiguracionScreen
-import com.example.idiomasvideos.logica.tituloConfigurationScreen
 
 @Composable
 fun MostrarConfiguracionScreen (
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     content: @Composable (PaddingValues) -> Unit = {},
+    navController: NavHostController
 ) {
     AppScaffold(
+        navController = navController,
         content = { padding ->
             ConfiguracionScreen(
-                modifier = Modifier
-                    .fillMaxSize(),
-              tituloConfigurationScreen= {tituloConfigurationScreen()},
-
-            )
+                modifier = modifier
+                    .fillMaxSize(),)
             content(padding)
         }
     )

@@ -21,6 +21,7 @@ import com.example.idiomasvideos.R
 
 
 @Composable
+//estos parametros son de ejemplo, en realidad como los valores no cambian en la funcion a la que se llama, no seria necesario ponerlos
 fun BodyTextoPruebaScreen(
     modifier: Modifier = Modifier,
     tituloBodyPrueba: @Composable () -> Unit = {},
