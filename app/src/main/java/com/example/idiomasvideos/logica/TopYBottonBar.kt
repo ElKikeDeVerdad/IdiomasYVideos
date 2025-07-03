@@ -1,7 +1,5 @@
-package com.example.idiomasvideos.pantallas
+package com.example.idiomasvideos.logica
 
-import android.R.attr.padding
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,10 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.BottomAppBar
@@ -27,32 +24,19 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.idiomasvideos.R
-import com.example.idiomasvideos.logica.BodyTextoPruebaScreen
-import com.example.idiomasvideos.logica.fondoBodyPrueba
-import com.example.idiomasvideos.logica.imagenBodyPrueba
-import com.example.idiomasvideos.logica.textoBodyPrueba
-import com.example.idiomasvideos.logica.tituloBodyPrueba
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
-    title: String = "",
     showBottomBar: Boolean = true,
-    onNavigationClick: () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit = {},
-    shape: Shape = RectangleShape
-
 ) {
     Scaffold(
         topBar = {
@@ -63,13 +47,11 @@ fun AppScaffold(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFF1976D2)
                 ),
-
                 title = {
                     Box(
                         modifier = Modifier
                             .fillMaxSize(),
                         contentAlignment = Alignment.Center
-
                     ) {
                         Text(
                             modifier = Modifier
@@ -79,11 +61,9 @@ fun AppScaffold(
                             color = Color.White,
                             fontSize = 30.sp,
                             fontWeight = FontWeight.W600
-
                         )
                     }
                 }
-
             )
         },
         bottomBar = {
@@ -93,8 +73,6 @@ fun AppScaffold(
                         .fillMaxWidth()
                         .fillMaxHeight(0.1f),
                     containerColor = Color(0xFF1976D2)
-
-
                 ) {
                     Box(
                         modifier = Modifier
@@ -102,19 +80,22 @@ fun AppScaffold(
                     ) {
                         Column(
                             modifier = Modifier
-                            .fillMaxSize(),
+                                .fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
+                        ) {
                             Text(
                                 modifier = Modifier,
                                 textAlign = TextAlign.Center,
                                 fontSize = 25.sp,
                                 text = "Este es el BottomBar",
                                 color = Color.White
-
                             )
-                            Row{
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
                                 IconButton(
                                     onClick = { /* acción */ }) {
                                     Icon(
@@ -122,21 +103,23 @@ fun AppScaffold(
                                         contentDescription = "Inicio",
                                         modifier = Modifier
                                             .size(40.dp)
-                                        )
-                                }
+                                    ) }
                                 IconButton(
                                     onClick = { /* acción */ }) {
                                     Icon(
-                                        Icons
-                                            .Default
-                                            .Favorite,
+                                        Icons.Default.Favorite,
                                         contentDescription = "Favoritos",
                                         modifier = Modifier
                                             .size(40.dp)
-
-
-                                    )
-                                }
+                                    ) }
+                                IconButton(
+                                    onClick = {/* acción */ }) {
+                                    Icon(
+                                        Icons.Default.Build,
+                                        contentDescription = "Configuracion",
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                    ) }
                             }
                         }
                     }
@@ -144,14 +127,7 @@ fun AppScaffold(
             }
         }
     ) { padding ->
-BodyTextoPruebaScreen(
-    modifier = Modifier
-        .padding(padding),
-    fondoBodyPrueba = {fondoBodyPrueba()},
-    tituloBodyPrueba = {tituloBodyPrueba()},
-    textoBodyPrueba = {textoBodyPrueba()},
-    imagenBodyPrueba = {imagenBodyPrueba()}
-)
         content(padding)
     }
 }
+
