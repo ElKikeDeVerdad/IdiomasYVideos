@@ -1,4 +1,4 @@
-package com.example.idiomasvideos.logica.logica_pantallas
+package com.example.idiomasvideos.logica.Logica_pantallas
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

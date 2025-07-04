@@ -7,11 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.idiomasvideos.logica.Helper.AppScaffold
-import com.example.idiomasvideos.logica.logica_pantallas.BodyTextoPruebaScreen
-import com.example.idiomasvideos.logica.logica_pantallas.fondoBodyPrueba
-import com.example.idiomasvideos.logica.logica_pantallas.imagenBodyPrueba
-import com.example.idiomasvideos.logica.logica_pantallas.textoBodyPrueba
-import com.example.idiomasvideos.logica.logica_pantallas.tituloBodyPrueba
+import com.example.idiomasvideos.logica.Logica_pantallas.BodyTextoPruebaScreen
+import com.example.idiomasvideos.logica.Logica_pantallas.fondoBodyPrueba
+import com.example.idiomasvideos.logica.Logica_pantallas.imagenBodyPrueba
+import com.example.idiomasvideos.logica.Logica_pantallas.textoBodyPrueba
+import com.example.idiomasvideos.logica.Logica_pantallas.tituloBodyPrueba
 
 //El parametro content es el que define que va a ir entre el top y bottom bar
 @Composable
