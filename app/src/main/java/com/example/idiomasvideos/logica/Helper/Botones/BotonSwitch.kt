@@ -1,4 +1,4 @@
-package com.example.idiomasvideos.logica.Helper
+package com.example.idiomasvideos.logica.Helper.Botones
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.animateDp
@@ -54,7 +54,6 @@ fun BotonSwitch(
                 .background(Color.White, CircleShape)// se crea un background circular de color blanco
         )
     }
-
 }
 
 @Composable

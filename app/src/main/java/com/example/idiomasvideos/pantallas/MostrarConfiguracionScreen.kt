@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.idiomasvideos.logica.AppScaffold
-import com.example.idiomasvideos.logica.ConfiguracionScreen
+import com.example.idiomasvideos.logica.Helper.AppScaffold
+import com.example.idiomasvideos.logica.logica_pantallas.ConfiguracionScreen
 
 @Composable
 fun MostrarConfiguracionScreen (

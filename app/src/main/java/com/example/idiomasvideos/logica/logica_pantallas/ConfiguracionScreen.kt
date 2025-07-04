@@ -1,6 +1,5 @@
-package com.example.idiomasvideos.logica
+package com.example.idiomasvideos.logica.logica_pantallas
 
-import android.graphics.Paint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.idiomasvideos.R
-import com.example.idiomasvideos.logica.Helper.UsarBotonSwitch
+import com.example.idiomasvideos.logica.Helper.Botones.UsarBotonSwitch
 //A diferencia de TextoPruebaScreen, aqui no pondre los parametros de las funciones ya que no van a cambiar
 @Composable
 fun ConfiguracionScreen(
@@ -33,11 +31,10 @@ fun ConfiguracionScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        //fondoConfigurationScreen()
+        fondoConfigurationScreen()
         Column(
             modifier = modifier
                 .fillMaxSize()
-                //.then(modifier)
         ) {
             Row(
                 modifier = Modifier
@@ -83,7 +80,7 @@ fun fondoConfigurationScreen(){
         painter = painterResource(R.drawable.fondo_1),
         contentDescription = "",
         modifier = Modifier
-            .fillMaxSize()
+           .fillMaxSize()
     )
 }
 
