@@ -24,6 +24,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
+fun UsarBotonSwitch(){
+
+    var encendido = remember { mutableStateOf(false) }
+
+    BotonSwitch(encendido = encendido, cambiarSwiche={ encendido.value = it})
+}
+
+@Composable
 fun BotonSwitch(
    encendido: MutableState<Boolean>,
    cambiarSwiche: (Boolean) -> Unit,
@@ -49,17 +57,10 @@ fun BotonSwitch(
     ) {
         Box(//esta caja crea el circulo y hace que se mueva
             modifier = Modifier
-                .offset(x= circulo.value) //utilizamos el valor de la variable circulo para crear la animacion de movimiento
+                .offset(x=circulo.value) //utilizamos el valor de la variable circulo para crear la animacion de movimiento
                 .size(24.dp) //se define el tamaño antes de crear el circulo para que se sepa que tamaño tendra
                 .background(Color.White, CircleShape)// se crea un background circular de color blanco
         )
     }
 }
 
-@Composable
-fun UsarBotonSwitch(){
-
-    var encendido = remember { mutableStateOf(false) }
-
-    BotonSwitch(encendido = encendido, cambiarSwiche={ encendido.value = it})
-}

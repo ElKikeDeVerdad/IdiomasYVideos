@@ -8,4 +8,8 @@ Aliquam henderit varius pellentesque sagittis curae ultrices ornare mollis erat 
     <string name="tituloBody">Titulo Body Prueba</string>
     <string name="bodyTexto">Lorem Ipsum Body:\nPorttitor morbi nostra felis in non arcu nec, porta dis fames convallis imperdiet accumsan, pharetra nam class lobortis egestas fusce. Iaculis felis et pellentesque vestibulum quis dapibus dictumst varius cras aliquam, molestie diam nec augue rhoncus massa cubilia tincidunt. Cras in dui auctor vehicula suscipit fames primis id praesent luctus non pretium, diam duis pellentesque nascetur faucibus hendrerit nostra imperdiet libero litora hac.</string>
     <string name="tituloConfiguracion">Configuracion</string>
+    <string name="AltoContraste">Alto Contraste</string>
+    <string name="DescripcionesAudio">Descripciones de Audio</string>
+    <string name="SubitulosAutomaticos">Subtítulos Automáticos</string>
+    <string name="Ubicacion">Ubicación</string>
 </resources>

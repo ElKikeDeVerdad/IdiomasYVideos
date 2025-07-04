@@ -1,4 +1,4 @@
-package com.example.idiomasvideos.logica.Helper
+package com.example.idiomasvideos.logica.Helper.Barras
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,8 +30,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.idiomasvideos.R
+import com.example.idiomasvideos.ViewModel.ContrasteViewModel
 import com.example.idiomasvideos.navegacion.Rutas
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
@@ -39,9 +41,11 @@ import com.example.idiomasvideos.navegacion.Rutas
 fun AppScaffold(
     showBottomBar: Boolean = true,
     content: @Composable (PaddingValues) -> Unit = {},
-    navController: NavController
+    navController: NavController,
+    contrasteViewModel: ContrasteViewModel = viewModel()
 
 ) {
+    val colorBarras = contrasteViewModel.obtenerColor()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -49,7 +53,7 @@ fun AppScaffold(
                     .fillMaxWidth()
                     .fillMaxHeight(0.15f),
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1976D2)
+                    containerColor = colorBarras
                 ),
                 title = {
                     Box(
@@ -76,7 +80,7 @@ fun AppScaffold(
                     modifier = Modifier
                         .fillMaxWidth()
                         .fillMaxHeight(0.1f),
-                    containerColor = Color(0xFF1976D2)
+                    containerColor = colorBarras
                 ) {
                     Box(
                         modifier = Modifier

@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.idiomasvideos.logica.Helper.AppScaffold
+import com.example.idiomasvideos.logica.Helper.Barras.AppScaffold
 import com.example.idiomasvideos.logica.Logica_pantallas.BodyTextoPruebaScreen
 import com.example.idiomasvideos.logica.Logica_pantallas.fondoBodyPrueba
 import com.example.idiomasvideos.logica.Logica_pantallas.imagenBodyPrueba

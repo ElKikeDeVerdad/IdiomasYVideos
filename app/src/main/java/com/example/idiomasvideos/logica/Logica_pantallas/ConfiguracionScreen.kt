@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,11 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.idiomasvideos.R
 import com.example.idiomasvideos.logica.Helper.Botones.UsarBotonSwitch
+import com.example.idiomasvideos.logica.Helper.OpcionesConfiguracion.BotonSwitcheAltoContraste
+
 //A diferencia de TextoPruebaScreen, aqui no pondre los parametros de las funciones ya que no van a cambiar
 @Composable
 fun ConfiguracionScreen(
     modifier: Modifier = Modifier
-){
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -45,25 +48,51 @@ fun ConfiguracionScreen(
             ) {
                 tituloConfigurationScreen()
             }
-           Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
-            Row {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+            ) {
+                Text(
+                    text = stringResource(R.string.AltoContraste),
+                )
+                Spacer(modifier = Modifier.width(168.dp))
+
+                BotonSwitcheAltoContraste()
+            }
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = stringResource(R.string.SubitulosAutomaticos)
+                )
+                Spacer(modifier = Modifier
+                    .width(100.dp))
+
                 UsarBotonSwitch()
             }
             Spacer(modifier = Modifier.height(30.dp))
 
-            Row {
-                UsarBotonSwitch()
-            }
-            Spacer(modifier = Modifier.height(30.dp))
-            Row {
+            Row(modifier = Modifier
+                .fillMaxWidth()) {
+                Text(
+                    text = stringResource(R.string.Ubicacion)
+                )
+                Spacer(modifier = Modifier.width(210.dp))
+
                 UsarBotonSwitch()
             }
         }
     }
 }
+
 @Composable
-fun tituloConfigurationScreen(){
+fun tituloConfigurationScreen() {
     Text(
         text = stringResource(R.string.tituloConfiguracion),
         textAlign = TextAlign.Center,
@@ -75,12 +104,12 @@ fun tituloConfigurationScreen(){
 }
 
 @Composable
-fun fondoConfigurationScreen(){
+fun fondoConfigurationScreen() {
     Image(
         painter = painterResource(R.drawable.fondo_1),
         contentDescription = "",
         modifier = Modifier
-           .fillMaxSize()
+            .fillMaxSize()
     )
 }
 
