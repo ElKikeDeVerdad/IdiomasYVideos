@@ -22,13 +22,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.idiomasvideos.R
+import com.example.idiomasvideos.ViewModel.ConfiguracionViewModel.ConfiguracionViewModel
 import com.example.idiomasvideos.logica.Helper.Botones.UsarBotonSwitch
 import com.example.idiomasvideos.logica.Helper.OpcionesConfiguracion.BotonSwitcheAltoContraste
 
 //A diferencia de TextoPruebaScreen, aqui no pondre los parametros de las funciones ya que no van a cambiar
 @Composable
 fun ConfiguracionScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: ConfiguracionViewModel
 ) {
     Box(
         modifier = Modifier

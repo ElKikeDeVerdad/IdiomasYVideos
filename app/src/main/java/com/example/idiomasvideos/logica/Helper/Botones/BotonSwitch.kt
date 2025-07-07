@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -22,26 +22,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.idiomasvideos.ViewModel.BotonesViewModel.BotonSwitchViewModel
+import androidx.compose.runtime.getValue // Antes No sabia que importando esto, podria usar by en vez de =,
+// asi te ahorras el tener que poner el .value y solo pones by.
 
 @Composable
 fun UsarBotonSwitch(){
-
     var encendido = remember { mutableStateOf(false) }
-
-    BotonSwitch(encendido = encendido, cambiarSwiche={ encendido.value = it})
 }
 
 @Composable
-fun BotonSwitch(
-   encendido: MutableState<Boolean>,
-   cambiarSwiche: (Boolean) -> Unit,
+fun BotonSwitchReusable(
+viewModel: BotonSwitchViewModel,
+modifier: Modifier = Modifier
 ){
-    var transicion = updateTransition(targetState = encendido.value)
+    val encendido by viewModel.encendido.collectAsState()
+
+    var transicion = updateTransition(targetState = encendido)
 
     var backgroundColor = transicion.animateColor { state ->
         if(state) Color(0xFF2196F3) else Color.LightGray } //Cambia colores, el State es encendido que es azul, si cambia se pone gris
 
-    val circulo = transicion.animateDp { state ->
+    val circulo by transicion.animateDp { state ->
         if(state)24.dp else 0.dp } // Cambia lugar, si State es encendido, esta a 24.dp, si esta apagado, esta a 0.dp
 
 //Este es el icono del boton
@@ -51,13 +53,13 @@ fun BotonSwitch(
             .height(28.dp)
             .clip(RoundedCornerShape(50.dp)) //clip hace que nada lo que este fuera de la figura se muestre, figura es RoundedCornerShape tiene 50.dp de tamaño.
             .background(backgroundColor.value) // color de fondo es el valor de la variable de transicion backgroundColor
-            .clickable {cambiarSwiche(!encendido.value)} //Clickable permite la accion de hacer click, el !encendido, hace que la funcion booleana haga lo contrario a lo que se quiere, es decir, si esta encedido queremos que se apague, la accion es apagar, contrario a encender, por lo que tiene que ser distinto a encender !encender
+            .clickable {viewModel.cambiarEstado()} //Clickable permite la accion de hacer click, el !encendido, hace que la funcion booleana haga lo contrario a lo que se quiere, es decir, si esta encedido queremos que se apague, la accion es apagar, contrario a encender, por lo que tiene que ser distinto a encender !encender
             .padding(horizontal = 2.dp, vertical = 2.dp), //evita que el circulo
         contentAlignment = Alignment.CenterStart
     ) {
         Box(//esta caja crea el circulo y hace que se mueva
             modifier = Modifier
-                .offset(x=circulo.value) //utilizamos el valor de la variable circulo para crear la animacion de movimiento
+                .offset(x=circulo) //utilizamos el valor de la variable circulo para crear la animacion de movimiento
                 .size(24.dp) //se define el tamaño antes de crear el circulo para que se sepa que tamaño tendra
                 .background(Color.White, CircleShape)// se crea un background circular de color blanco
         )

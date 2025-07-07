@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.idiomasvideos.R
-import com.example.idiomasvideos.ViewModel.ContrasteViewModel
+import com.example.idiomasvideos.ViewModel.ConfiguracionViewModel.ContrasteViewModel
 import com.example.idiomasvideos.navegacion.Rutas
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
