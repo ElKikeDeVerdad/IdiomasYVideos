@@ -22,12 +22,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
 @Composable
-fun YoutubeVideo(videoId: String){
+fun YoutubeVideo(videoId: String, titulo: String, modifier: Modifier){
     val context = LocalContext.current
     val thumbnailUrl = "https://img.youtube.com/vi/$videoId/0.jpg"
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(200.dp)
             .clickable {
