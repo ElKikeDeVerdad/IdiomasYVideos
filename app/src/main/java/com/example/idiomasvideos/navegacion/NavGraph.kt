@@ -13,7 +13,7 @@ import com.example.idiomasvideos.pantallas.MostrarTextoPruebaScreen
 fun AppNavGraph(
     modifier: Modifier,
     navController: NavHostController,
-    startDestination: String = Rutas.CONFIGURACION
+    startDestination: String = Rutas.HOME
 ) {
     NavHost(
         navController = navController,

@@ -12,4 +12,5 @@ Aliquam henderit varius pellentesque sagittis curae ultrices ornare mollis erat 
     <string name="DescripcionesAudio">Descripciones de Audio</string>
     <string name="SubitulosAutomaticos">Subtítulos Automáticos</string>
     <string name="Ubicacion">Ubicación</string>
+    <string name="PrimerVideo">Primer Video de Youtube</string>
 </resources>
