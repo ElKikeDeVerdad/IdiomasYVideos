@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.idiomasvideos.pantallas.MostrarConfiguracionScreen
+import com.example.idiomasvideos.pantallas.MostrarHomeScreen
 import com.example.idiomasvideos.pantallas.MostrarTextoPruebaScreen
 
 @Composable
@@ -28,6 +29,13 @@ fun AppNavGraph(
             MostrarConfiguracionScreen(
                 navController = navController,
                 modifier = modifier,
+            )
+        }
+
+        composable(Rutas.HOME){
+            MostrarHomeScreen(
+                navController = navController,
+                modifier = modifier
             )
         }
 
