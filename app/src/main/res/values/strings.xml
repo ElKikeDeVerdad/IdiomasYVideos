@@ -13,4 +13,10 @@ Aliquam henderit varius pellentesque sagittis curae ultrices ornare mollis erat 
     <string name="SubitulosAutomaticos">Subtítulos Automáticos</string>
     <string name="Ubicacion">Ubicación</string>
     <string name="PrimerVideo">Primer Video de Youtube</string>
+    <string name="perritou">Imagen de Perritou</string>
+    <string name="Box1">Cajita con perritou</string>
+    <string name="Box2">Creo que era un perritou triste</string>
+    <string name="perritouTriste">Perritou Triste</string>
+    <string name="meme1">Sonido Epico de GigaChad</string>
+    <string name="meme2">Kanguro. Simplemente, Kanguro.</string>
 </resources>

@@ -35,6 +35,7 @@ fun UsarBotonSwitch(){
 fun BotonSwitch(
    encendido: MutableState<Boolean>,
    cambiarSwiche: (Boolean) -> Unit,
+   modifier: Modifier = Modifier
 ){
     var transicion = updateTransition(targetState = encendido.value)
 

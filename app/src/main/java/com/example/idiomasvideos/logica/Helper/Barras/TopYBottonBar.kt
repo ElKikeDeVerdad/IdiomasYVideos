@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -105,13 +106,14 @@ fun AppScaffold(
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
                                 IconButton(
-                                    onClick = { navController.navigate(Rutas.HOME)}) {
+                                    onClick = { navController.navigate(Rutas.HOME) }) {
                                     Icon(
                                         Icons.Default.Home,
                                         contentDescription = "Inicio",
                                         modifier = Modifier
                                             .size(40.dp)
-                                    ) }
+                                    )
+                                }
                                 IconButton(
                                     onClick = { navController.navigate(Rutas.TEXTOPRUEBASCREEN) }) {
                                     Icon(
@@ -119,15 +121,28 @@ fun AppScaffold(
                                         contentDescription = "Favoritos",
                                         modifier = Modifier
                                             .size(40.dp)
-                                    ) }
+                                    )
+                                }
                                 IconButton(
-                                    onClick = {navController.navigate(Rutas.CONFIGURACION) }) {
+                                    onClick = { navController.navigate(Rutas.CONFIGURACION) }) {
                                     Icon(
                                         Icons.Default.Settings,
                                         contentDescription = "Configuracion",
                                         modifier = Modifier
                                             .size(40.dp)
-                                    ) }
+                                    )
+                                }
+                                IconButton(
+                                    onClick = { navController.navigate(Rutas.BOXSCREEN) }
+                                ) {
+                                    Icon(
+                                    Icons.Default.Star,
+                                    contentDescription = "BoxScreen",
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                    )
+
+                                }
                             }
                         }
                     }

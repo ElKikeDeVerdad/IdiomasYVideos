@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.idiomasvideos.pantallas.MostrarBoxScreen
 import com.example.idiomasvideos.pantallas.MostrarConfiguracionScreen
 import com.example.idiomasvideos.pantallas.MostrarHomeScreen
 import com.example.idiomasvideos.pantallas.MostrarTextoPruebaScreen
@@ -34,6 +35,12 @@ fun AppNavGraph(
 
         composable(Rutas.HOME){
             MostrarHomeScreen(
+                navController = navController,
+                modifier = modifier
+            )
+        }
+        composable(Rutas.BOXSCREEN) {
+            MostrarBoxScreen(
                 navController = navController,
                 modifier = modifier
             )
