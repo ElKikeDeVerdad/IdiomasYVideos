@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.example.idiomasvideos.pantallas.MostrarBoxScreen
 import com.example.idiomasvideos.pantallas.MostrarConfiguracionScreen
 import com.example.idiomasvideos.pantallas.MostrarHomeScreen
+import com.example.idiomasvideos.pantallas.MostrarParallaxScreen
 import com.example.idiomasvideos.pantallas.MostrarTextoPruebaScreen
 
 @Composable
@@ -25,15 +26,16 @@ fun AppNavGraph(
             MostrarTextoPruebaScreen(
                 navController = navController,
                 modifier = modifier
-            ) }
-        composable(Rutas.CONFIGURACION){
+            )
+        }
+        composable(Rutas.CONFIGURACION) {
             MostrarConfiguracionScreen(
                 navController = navController,
                 modifier = modifier,
             )
         }
 
-        composable(Rutas.HOME){
+        composable(Rutas.HOME) {
             MostrarHomeScreen(
                 navController = navController,
                 modifier = modifier
@@ -45,7 +47,13 @@ fun AppNavGraph(
                 modifier = modifier
             )
         }
+        composable(Rutas.PARALLAXSCREEN) {
+            MostrarParallaxScreen(
+                navController = navController,
+                modifier = modifier
+            )
 
+        }
     }
 }
 

@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -141,6 +142,17 @@ fun AppScaffold(
                                     modifier = Modifier
                                         .size(40.dp)
                                     )
+                                    IconButton(
+                                        onClick = {navController.navigate(Rutas.PARALLAXSCREEN)}
+                                    ) {
+                                        Icon(
+                                            Icons.Default.ThumbUp,
+                                            contentDescription = "Parallax",
+                                            modifier = Modifier
+                                                .size(40.dp)
+                                        )
+
+                                    }
 
                                 }
                             }

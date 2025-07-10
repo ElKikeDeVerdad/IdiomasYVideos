@@ -5,4 +5,5 @@ object Rutas {
     const val CONFIGURACION = "configuracion"
     const val TEXTOPRUEBASCREEN = "textoprueba"
     const val BOXSCREEN = "boxscreen"
+    const val PARALLAXSCREEN = "parallaxscreen"
 }

@@ -2,7 +2,6 @@ package com.example.idiomasvideos.logica.Helper.BoxScreenFunciones.BoxUnoAccion
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

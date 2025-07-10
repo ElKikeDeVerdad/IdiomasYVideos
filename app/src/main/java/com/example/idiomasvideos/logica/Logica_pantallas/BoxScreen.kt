@@ -15,6 +15,7 @@ import com.example.idiomasvideos.logica.Helper.BoxScreenFunciones.BoxUno
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.getValue
+import com.example.idiomasvideos.logica.Helper.BoxScreenFunciones.BoxDos
 import com.example.idiomasvideos.logica.Helper.BoxScreenFunciones.BoxUnoAccion.AccionBoxUno
 
 
@@ -36,6 +37,14 @@ fun BoxScreen(
         modifier = modifier
             .fillMaxSize()
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            BoxDos(modifier = Modifier
+                .fillMaxSize())
+        }
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -69,7 +78,10 @@ fun BoxScreen(
                 }
 
             }
+
         }
+
+
     }
 }
 
