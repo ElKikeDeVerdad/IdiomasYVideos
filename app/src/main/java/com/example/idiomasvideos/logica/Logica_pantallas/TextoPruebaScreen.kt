@@ -12,12 +12,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.decode.GifDecoder
+import coil.request.ImageRequest
 import com.example.idiomasvideos.R
+import android.os.Build
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import coil.decode.ImageDecoderDecoder
 
 
 @Composable
@@ -35,12 +45,16 @@ fun BodyTextoPruebaScreen(
     ) {
         fondoBodyPrueba()
 
+        val scrollState = rememberScrollState()
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .then(modifier), //aplica el padding(padding) definido en el modifier despues del fillMaxSize
+                .then(modifier) //aplica el padding(padding) definido en el modifier despues del fillMaxSize
+                .verticalScroll(scrollState),
+
             horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
+        ) {
             Spacer(modifier = Modifier.height(30.dp))
 
             tituloBodyPrueba()
@@ -50,9 +64,23 @@ fun BodyTextoPruebaScreen(
             Spacer(modifier = Modifier.height(15.dp))
 
             imagenBodyPrueba()
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+            )
+            ImagenPruebaGif(
+                modifier = Modifier
+                    .fillMaxSize()
+            )
         }
     }
 }
+
 @Composable
 fun tituloBodyPrueba() {
     Text(
@@ -96,4 +124,22 @@ fun fondoBodyPrueba() {
 
         )
     }
+}
+
+@Composable
+fun ImagenPruebaGif(
+    modifier: Modifier
+) {
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(R.drawable.gif_pato)
+            .decoderFactory(GifDecoder.Factory())
+            .build(),
+        contentDescription = "",
+        contentScale = ContentScale.FillWidth, // Importante porque hara que las imagenes ocupen el espacio segun el aspecto que pusimos antes, este caso 2:1
+        alignment = Alignment.BottomCenter,
+        modifier = Modifier
+            .fillMaxSize()
+
+    )
 }
