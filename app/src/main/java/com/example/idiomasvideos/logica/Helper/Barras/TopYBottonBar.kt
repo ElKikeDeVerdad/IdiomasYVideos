@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
@@ -137,23 +138,31 @@ fun AppScaffold(
                                     onClick = { navController.navigate(Rutas.BOXSCREEN) }
                                 ) {
                                     Icon(
-                                    Icons.Default.Star,
-                                    contentDescription = "BoxScreen",
-                                    modifier = Modifier
-                                        .size(40.dp)
+                                        Icons.Default.Star,
+                                        contentDescription = "BoxScreen",
+                                        modifier = Modifier
+                                            .size(40.dp)
                                     )
-                                    IconButton(
-                                        onClick = {navController.navigate(Rutas.PARALLAXSCREEN)}
-                                    ) {
-                                        Icon(
-                                            Icons.Default.ThumbUp,
-                                            contentDescription = "Parallax",
-                                            modifier = Modifier
-                                                .size(40.dp)
-                                        )
-
-                                    }
-
+                                }
+                                IconButton(
+                                    onClick = { navController.navigate(Rutas.PARALLAXSCREEN) }
+                                ) {
+                                    Icon(
+                                        Icons.Default.ThumbUp,
+                                        contentDescription = "Parallax",
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                    )
+                                }
+                                IconButton(
+                                    onClick = { navController.navigate(Rutas.CIRCULOPRUEBASCREEN) }
+                                ) {
+                                    Icon(
+                                        Icons.Default.AddCircle,
+                                        contentDescription = "CirculoPrueba",
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                    )
                                 }
                             }
                         }
@@ -161,6 +170,7 @@ fun AppScaffold(
                 }
             }
         }
+
     ) { padding ->
         content(padding)
     }

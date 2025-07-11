@@ -6,4 +6,5 @@ object Rutas {
     const val TEXTOPRUEBASCREEN = "textoprueba"
     const val BOXSCREEN = "boxscreen"
     const val PARALLAXSCREEN = "parallaxscreen"
+    const val CIRCULOPRUEBASCREEN = "ciruclomuestrascreen"
 }
