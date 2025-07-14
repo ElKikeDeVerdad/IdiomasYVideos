@@ -13,9 +13,9 @@ import com.example.idiomasvideos.logica.Logica_pantallas.CirculoPruebaScreen
 fun MostrarCirculoPrueba(
     modifier: Modifier = Modifier,
     navController: NavHostController
-                         ){
+) {
     AppScaffold(
-    navController = navController,
+        navController = navController,
         content = { padding ->
             CirculoPruebaScreen(
                 navController = navController,

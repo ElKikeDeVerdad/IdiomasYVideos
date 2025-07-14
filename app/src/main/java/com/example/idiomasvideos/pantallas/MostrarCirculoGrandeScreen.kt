@@ -19,6 +19,7 @@ fun MostrarCirculoGrandeScreen(
         navController = navController,
         content = { padding ->
             CirculoPruebaGrandeScreen(
+                navController = navController,
                 modifier = modifier
                     .fillMaxSize()
                     .padding(padding)

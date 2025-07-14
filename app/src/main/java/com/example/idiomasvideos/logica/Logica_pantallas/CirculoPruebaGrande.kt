@@ -4,6 +4,7 @@ package com.example.idiomasvideos.logica.Logica_pantallas
 import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,14 +36,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import com.example.idiomasvideos.R
+import com.example.idiomasvideos.navegacion.Rutas
 import java.nio.file.WatchEvent
 
 @Composable
-fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
+fun CirculoPruebaGrandeScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     // Estado para controlar la posición X del círculo.
     var targetOffsetX by remember { mutableStateOf(-400.dp) }
 
@@ -73,7 +79,8 @@ fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
                     x = animatedOffsetX.x.dp,
                     y = animatedOffsetX.y.dp
                 ) //Sin esto no ocurrira la animacion ya que esto indica que debe usar la ubicacion animada en vez de una fija.
-                .background(Color.Green),
+                .background(Color.Green)
+                .clickable(onClick = { navController.navigate(Rutas.CIRCULOPRUEBASCREEN)}),
 
             contentAlignment = Alignment.Center // Centra el contenido dentro del círculo
         ) {
