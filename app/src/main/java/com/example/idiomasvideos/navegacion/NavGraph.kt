@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.idiomasvideos.pantallas.MostrarBoxScreen
+import com.example.idiomasvideos.pantallas.MostrarCirculoGrandeScreen
 import com.example.idiomasvideos.pantallas.MostrarCirculoPrueba
 import com.example.idiomasvideos.pantallas.MostrarConfiguracionScreen
 import com.example.idiomasvideos.pantallas.MostrarHomeScreen
@@ -56,6 +57,13 @@ fun AppNavGraph(
         }
         composable(Rutas.CIRCULOPRUEBASCREEN) {
             MostrarCirculoPrueba(
+                navController = navController,
+                modifier = modifier
+            )
+        }
+
+        composable(Rutas.CIRCULOPRUEBAGRANDESCREEN){
+            MostrarCirculoGrandeScreen(
                 navController = navController,
                 modifier = modifier
             )

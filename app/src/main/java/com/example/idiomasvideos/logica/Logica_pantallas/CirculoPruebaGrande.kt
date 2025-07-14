@@ -1,42 +1,60 @@
 package com.example.idiomasvideos.logica.Logica_pantallas
 
-import android.service.autofill.OnClickAction
+
+import androidx.compose.animation.core.animateOffsetAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import com.example.idiomasvideos.R
-import com.example.idiomasvideos.navegacion.Rutas
-
 
 @Composable
-fun CirculoPruebaScreen(
-    modifier: Modifier = Modifier,
-    navController: NavController
-) {
+fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
+    // Estado para controlar la posición X del círculo.
+    var targetOffsetX by remember { mutableStateOf(-400.dp) }
+
+    // Estado animado que sigue a targetOffsetX.
+    val animatedOffsetX by animateOffsetAsState(
+
+        targetValue = Offset(
+            x = targetOffsetX.value.toFloat(),
+            y = 0f
+        ), // targetValue es un Offset. Solo nos importa la X.
+        animationSpec = tween<Offset>(durationMillis = 1000),// Duración de la animación en milisegundos (1 segundo)
+    )
+
+    // Un LaunchedEffect para disparar la animación tan pronto como la pantalla se componga.
+    LaunchedEffect(Unit) {
+        targetOffsetX = 0.dp // Mueve el círculo a la posición central (0 dp de offset)
+    }
     Box(
         modifier = modifier
             .fillMaxSize(),
@@ -44,20 +62,22 @@ fun CirculoPruebaScreen(
     ) {
         Box(
             modifier = Modifier
-                .size(200.dp) // Asegura forma circular; puedes ajustar esto
+                .size(800.dp) // Asegura forma circular; puedes ajustar esto
                 .clip(CircleShape)
-                .background(Color.Blue)
-                .clickable(onClick = { navController.navigate(Rutas.CIRCULOPRUEBAGRANDESCREEN) }),
+                .offset(x = animatedOffsetX.x.dp, y = animatedOffsetX.y.dp)
+                .background(Color.Green),
+
             contentAlignment = Alignment.Center // Centra el contenido dentro del círculo
         ) {
-            ContenidoCirculo()
+            ContenidoCirculoGrande()
         }
     }
 }
 
 
 @Composable
-fun ContenidoCirculo() {
+fun ContenidoCirculoGrande() {
+
     Column(
         modifier = Modifier
             .clipToBounds(),
@@ -67,7 +87,8 @@ fun ContenidoCirculo() {
     ) {
         Text(
             text = stringResource(R.string.textCirculo),
-            color = Color.White
+            color = Color.White,
+            fontSize = 30.sp
         )
         Spacer(
             modifier = Modifier
@@ -85,5 +106,3 @@ fun ContenidoCirculo() {
 
     }
 }
-
-
