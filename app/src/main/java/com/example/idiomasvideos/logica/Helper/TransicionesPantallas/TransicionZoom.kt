@@ -1,7 +1,5 @@
 package com.example.idiomasvideos.logica.Helper.TransicionesPantallas
 
-import android.R
-import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -16,7 +14,7 @@ import androidx.navigation.NavBackStackEntry
 object TransicionZoom {
 
     //Definir duracion milisegundo, cambiar esto para que sea mas rapido o lento la transicion, esta puesto muy lento para que se aprecie mejor la transicion.
-    private const val duracionZoom = 2000
+    private const val duracionZoom = 1000
 
     //Zoom in
     val zoomInTransicion: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
