@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,12 +32,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.decode.GifDecoder
 import coil.request.ImageRequest
 import com.example.idiomasvideos.R
+import java.nio.file.WatchEvent
 
 @Composable
 fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
@@ -47,11 +52,11 @@ fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
         targetValue = Offset(
             x = targetOffsetX.value.toFloat(),
             y = 0f
-        ), // targetValue es un Offset. Solo nos importa la X.
+        ), // targetValue es un Offset. Solo nos importa la X, pero si sale algun erorr en el Offset, probablemente sea porque hay que poner toFloat y un valor en y.
         animationSpec = tween<Offset>(durationMillis = 1000),// Duración de la animación en milisegundos (1 segundo)
     )
 
-    // Un LaunchedEffect para disparar la animación tan pronto como la pantalla se componga.
+    // Un LaunchedEffect activa la animación tan pronto como la pantalla se componga.
     LaunchedEffect(Unit) {
         targetOffsetX = 0.dp // Mueve el círculo a la posición central (0 dp de offset)
     }
@@ -64,7 +69,10 @@ fun CirculoPruebaGrandeScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .size(800.dp) // Asegura forma circular; puedes ajustar esto
                 .clip(CircleShape)
-                .offset(x = animatedOffsetX.x.dp, y = animatedOffsetX.y.dp)
+                .offset(
+                    x = animatedOffsetX.x.dp,
+                    y = animatedOffsetX.y.dp
+                ) //Sin esto no ocurrira la animacion ya que esto indica que debe usar la ubicacion animada en vez de una fija.
                 .background(Color.Green),
 
             contentAlignment = Alignment.Center // Centra el contenido dentro del círculo
@@ -80,15 +88,19 @@ fun ContenidoCirculoGrande() {
 
     Column(
         modifier = Modifier
-            .clipToBounds(),
+            .clipToBounds()
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         Text(
             text = stringResource(R.string.textCirculo),
-            color = Color.White,
-            fontSize = 30.sp
+            color = Color.Black,
+            fontSize = 30.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
         )
         Spacer(
             modifier = Modifier
@@ -101,8 +113,10 @@ fun ContenidoCirculoGrande() {
                 .decoderFactory(GifDecoder.Factory())
                 .build(),
             contentDescription = "",
-            contentScale = ContentScale.FillBounds
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .fillMaxHeight(0.8f)
+                .fillMaxWidth(0.8f)
         )
-
     }
 }
