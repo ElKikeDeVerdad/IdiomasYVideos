@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IdiomsAndYoutube</string>
+    <string name="tituloTopBar">Idioms and Youtube </string>
+    <string name="LoremIpsumTextoPrueba">Lorem Ipsum in english
+        hello how are you, im unda de wata
+    </string>
+    <string name="tituloBody">Titule Body Proof</string>
+    <string name="bodyTexto">Lorem Ipsum in english please thank you very much yes yes</string>
+    <string name="AltoContraste">High Contrast</string>
+    <string name="DescripcionesAudio">Descriptions of audio</string>
+    <string name="SubitulosAutomaticos">Subtitule Automatics</string>
+    <string name="Ubicacion">Ubicashion</string>
+    <string name="PrimerVideo">First video Youtube</string>
+    <string name="perritou">Imagen of Perritou</string>
+    <string name="Box1">Boxito with perritou</string>
+    <string name="Box2">I believe it was a perritou triste</string>
+    <string name="perritouTriste">Perritou Sad</string>
+    <string name="meme1">Sonido Epico de GigaChad</string>
+    <string name="meme2">Kanguro. Simplemente, Kanguro.</string>
+    <string name="textCirculo">Transishion</string>
+    <string name="CambiarIdioma">English</string>
+    <string name="CambiarIdiomaEspañol">Español</string>
+    <string name="tituloConfiguracion">Configurashion</string>
+
+</resources>

@@ -20,4 +20,6 @@ Aliquam henderit varius pellentesque sagittis curae ultrices ornare mollis erat 
     <string name="meme1">Sonido Epico de GigaChad</string>
     <string name="meme2">Kanguro. Simplemente, Kanguro.</string>
     <string name="textCirculo">Transición</string>
+    <string name="CambiarIdioma">English</string>
+    <string name="CambiarIdiomaEspañol">Español</string>
 </resources>
