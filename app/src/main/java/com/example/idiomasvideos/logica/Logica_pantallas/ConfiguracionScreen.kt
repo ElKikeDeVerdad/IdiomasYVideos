@@ -49,7 +49,7 @@ fun ConfiguracionScreen(
 
     var expanded by remember { mutableStateOf(false) }
     val idiomasDisponibles = listOf("es", "en", "fr") // Idiomas
-    val etiquetas = mapOf("es" to "Español", "en" to "Inglés", "fr" to "Francés")
+    val etiquetas = mapOf("es" to "Español", "en" to "Inglés", "fr" to "Francés") //Cuando la app encuentre "es", pondra en string Español, et
 
     // Estado local para el idioma seleccionado
     var idiomaSeleccionado by remember { mutableStateOf(idiomaVM.idiomaActual()) }
