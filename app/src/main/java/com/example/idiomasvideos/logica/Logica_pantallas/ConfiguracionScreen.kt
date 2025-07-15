@@ -108,18 +108,21 @@ fun ConfiguracionScreen(
                     .padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Idioma actual: ${etiquetas[idiomaSeleccionado]}")
+                Text("Idioma actual: ${etiquetas[idiomaSeleccionado]}") // Mostrara el valor actual de la etiqueta dependiendo de la funcion idiomaSeleccionado
                 Spacer(modifier = Modifier.width(16.dp))
 
+                //crear el boton para seleccionar idioma de tipo dropdownmenu
                 Box {
-                    Button(onClick = { expanded = true }) {
+                    Button(onClick = { expanded = true }) { //cuando le hagas click se hace true por lo que muestra la lista
                         Text("Seleccionar idioma")
                     }
 
                     DropdownMenu(
                         expanded = expanded,
-                        onDismissRequest = { expanded = false }
+                        onDismissRequest = { expanded = false } //OnDismissRequest es cuando la accion termine, ocurrira que el expanded ahora se false, quitando la lista
                     ) {
+
+                        //esto realiza la accion de cambiar el idioma utilizando el viewmodel.
                         idiomasDisponibles.forEach { idioma ->
                             DropdownMenuItem(
                                 onClick = {
@@ -132,6 +135,7 @@ fun ConfiguracionScreen(
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
+                                        //Muestra por medio de un boton circular cual idioma esta seleccionado rellenando el circulo interno
                                         RadioButton(
                                             selected = idiomaSeleccionado == idioma,
                                             onClick = null // manejado por el onClick de DropdownMenuItem

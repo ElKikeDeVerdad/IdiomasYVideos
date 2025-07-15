@@ -14,7 +14,7 @@ import androidx.navigation.NavBackStackEntry
 object TransicionZoom {
 
     //Definir duracion milisegundo, cambiar esto para que sea mas rapido o lento la transicion, esta puesto muy lento para que se aprecie mejor la transicion.
-    private const val duracionZoom = 1000
+    private const val duracionZoom = 2000
 
     //Zoom in
     val zoomInTransicion: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {

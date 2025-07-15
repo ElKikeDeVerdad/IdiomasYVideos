@@ -49,22 +49,23 @@ fun CirculoPruebaGrandeScreen(
     navController: NavController
 ) {
     // Estado para controlar la posición X del círculo.
-    var targetOffsetX by remember { mutableStateOf(-400.dp) }
+   // var targetOffsetX by remember { mutableStateOf(-400.dp) }
 
     // Estado animado que sigue a targetOffsetX.
-    val animatedOffsetX by animateOffsetAsState(
+   // val animatedOffsetX by animateOffsetAsState(
 
-        targetValue = Offset(
-            x = targetOffsetX.value.toFloat(),
-            y = 0f
-        ), // targetValue es un Offset. Solo nos importa la X, pero si sale algun erorr en el Offset, probablemente sea porque hay que poner toFloat y un valor en y.
-        animationSpec = tween<Offset>(durationMillis = 1000),// Duración de la animación en milisegundos (1 segundo)
+    /*targetValue = Offset(
+        x = targetOffsetX.value.toFloat(),
+        y = 0f
+    ), // targetValue es un Offset. Solo nos importa la X, pero si sale algun erorr en el Offset, probablemente sea porque hay que poner toFloat y un valor en y.
+    animationSpec =
+        tween<Offset>(durationMillis = 1000),// Duración de la animación en milisegundos (1 segundo)
     )
 
     // Un LaunchedEffect activa la animación tan pronto como la pantalla se componga.
     LaunchedEffect(Unit) {
-        targetOffsetX = 0.dp // Mueve el círculo a la posición central (0 dp de offset)
-    }
+        targetOffsetX = 0.dp // Mueve el círculo a la posición central (0 dp de offset)*/
+    //}
     Box(
         modifier = modifier
             .fillMaxSize(),
@@ -74,12 +75,12 @@ fun CirculoPruebaGrandeScreen(
             modifier = Modifier
                 .size(800.dp) // Asegura forma circular; puedes ajustar esto
                 .clip(CircleShape)
-                .offset(
+               /* .offset(
                     x = animatedOffsetX.x.dp,
                     y = animatedOffsetX.y.dp
-                ) //Sin esto no ocurrira la animacion ya que esto indica que debe usar la ubicacion animada en vez de una fija.
+                ) *///Sin esto no ocurrira la animacion ya que esto indica que debe usar la ubicacion animada en vez de una fija.
                 .background(Color.Green)
-                .clickable(onClick = { navController.navigate(Rutas.CIRCULOPRUEBASCREEN)}),
+                .clickable(onClick = { navController.navigate(Rutas.CIRCULOPRUEBASCREEN) }),
 
             contentAlignment = Alignment.Center // Centra el contenido dentro del círculo
         ) {
