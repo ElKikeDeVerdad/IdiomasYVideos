@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,8 +31,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.idiomasvideos.R
@@ -51,6 +55,9 @@ fun FuncionParallaxUno(
 
     val gifLottieUnoSpeed = 0.1f
 
+    val boxLottieSpeed = 1f
+
+    val textoLottieSpeed = 0.8f
 
     val mapaMundiAltura =
         (LocalConfiguration.current.screenWidthDp * (1f)).dp //necesitas saber el aspect ratio para hacer esto bien, en mi caso esta imagen el aspect ratio es 2:1 investigar bien como hacer para que cubra el espacio
@@ -70,6 +77,12 @@ fun FuncionParallaxUno(
 
     val scrollProgress =
         remember { mutableStateOf(0f) } //Aqui manejamos el la varibale de PruebaLottie
+
+    var boxLottieOffset by remember { mutableStateOf(0f) }
+
+    var textLottieBoxOffset by remember { mutableStateOf(0f) }
+
+
     val nestedScrollConnection = object : NestedScrollConnection {
         override fun onPreScroll( //antes de que la funcion del scroll sea procesado, ocurrira esta funcion
             available: Offset,
@@ -91,9 +104,18 @@ fun FuncionParallaxUno(
             perritoTristeOffset += delta * perritoTristeScrollSpeed
             gifPatoOffset += delta * gifPatoScrollSpeed
             giftLottieUnoOffset += delta * gifLottieUnoSpeed
-            scrollProgress.value = (scrollProgress.value + delta / 500f).let { (it % 1f + 1f) % 1f } //Esto esta diciendo que, primero sumamos delta y si el resultado es negativo, sumamos 1, asegurando que siempre este entre 0 y 1 y no hayan negativos
+            scrollProgress.value =
+                (scrollProgress.value + delta / 500f).let { (it % 1f + 1f) % 1f } //Esto esta diciendo que, primero sumamos delta y si el resultado es negativo, sumamos 1, asegurando que siempre este entre 0 y 1 y no hayan negativos
+            giftLottieUnoOffset = (giftLottieUnoOffset + delta * gifLottieUnoSpeed).coerceIn(-300f, 300f)
 
+            //Detalle importante, en este momento estamos haciendo que el numero positivo (el aumento) sea hacia abajo, por lo que cuando es
+            // + delta, hace que cuando scrolles hacia abajo, las cosas se muevan de arriba para abajo, si queremos que se mueva de abajo hacia arriba,
+            //tendria que ser - delta porque cuando hacemos scroll hacia abajo, delta es negativo,y como todos ya seguro sabe, - por - es positivo.
+            // En resumen, negativo es hacer que bajen las cosas, positivo es subirlas, si queremos subir, tenemos
+            //que hacer que delta sea positivo haciendo un -(-delta)
 
+            boxLottieOffset = (boxLottieOffset - delta * boxLottieSpeed).coerceIn(-500f, 500f)
+            textLottieBoxOffset = (textLottieBoxOffset - delta * textoLottieSpeed).coerceIn(-300f, 300f)
 
             //scrollProgress.value = (scrollProgress.value + delta / 500f) % 1f // de esta manera se repite el ciclo de la animacion
             // pero en este caso, cuando bajamos el delta es negativo y hace que la operacion matematica de negativo y rompe la animacion
@@ -200,18 +222,47 @@ fun FuncionParallaxUno(
                         translationY = gifPatoOffset
                     }
             )
-            PruebaLottie(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .graphicsLayer {
-                        translationY = giftLottieUnoOffset
-                    },
-                scrollProgress = scrollProgress.value
-            )
-
 
         }
 
+        item {
+            Box(
+                modifier = Modifier
+                    .clipToBounds()
+                    .fillMaxWidth()
+                    .height(500.dp)
+                    .background(
+                        color = Color.Blue
+                    )
+                    .graphicsLayer() {
+                        translationY = boxLottieOffset
+                    }
+            ) {
+
+                PruebaLottie(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.5f)
+                        .background(Color.Green)
+                    /* .graphicsLayer {
+                         translationY = giftLottieUnoOffset
+                     }*/,
+                    scrollProgress = scrollProgress.value
+                )
+                Text(
+                    text = stringResource(R.string.PruebaLottie),
+                    color = Color.Black,
+                    textAlign = TextAlign.Center,
+                    fontSize = 15.sp,
+                    modifier = Modifier
+                        .graphicsLayer(
+                            translationY = textLottieBoxOffset
+                        )
+
+                )
+
+            }
+        }
 
         items(count = 10) {
             Text(
