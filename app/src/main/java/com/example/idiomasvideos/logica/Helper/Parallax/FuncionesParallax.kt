@@ -70,7 +70,6 @@ fun FuncionParallaxUno(
 
     val scrollProgress =
         remember { mutableStateOf(0f) } //Aqui manejamos el la varibale de PruebaLottie
-
     val nestedScrollConnection = object : NestedScrollConnection {
         override fun onPreScroll( //antes de que la funcion del scroll sea procesado, ocurrira esta funcion
             available: Offset,
