@@ -49,7 +49,7 @@ fun FuncionParallaxUno(
 
     val gifPatoScrollSpeed = 3f
 
-    val gifLottieUnoSpeed = 1.5f
+    val gifLottieUnoSpeed = 0.1f
 
 
     val mapaMundiAltura =
@@ -67,6 +67,9 @@ fun FuncionParallaxUno(
     var gifPatoOffset by remember { mutableStateOf(0f) }
 
     var giftLottieUnoOffset by remember { mutableStateOf(0f) }
+
+    val scrollProgress =
+        remember { mutableStateOf(0f) } //Aqui manejamos el la varibale de PruebaLottie
 
     val nestedScrollConnection = object : NestedScrollConnection {
         override fun onPreScroll( //antes de que la funcion del scroll sea procesado, ocurrira esta funcion
@@ -88,7 +91,21 @@ fun FuncionParallaxUno(
             perritoFelizOffset += delta * perritoFelizScrollSpeed
             perritoTristeOffset += delta * perritoTristeScrollSpeed
             gifPatoOffset += delta * gifPatoScrollSpeed
-            giftLottieUnoOffset += delta * 1.5f
+            giftLottieUnoOffset += delta * gifLottieUnoSpeed
+            scrollProgress.value = (scrollProgress.value + delta / 500f).let { (it % 1f + 1f) % 1f } //Esto esta diciendo que, primero sumamos delta y si el resultado es negativo, sumamos 1, asegurando que siempre este entre 0 y 1 y no hayan negativos
+
+
+
+            //scrollProgress.value = (scrollProgress.value + delta / 500f) % 1f // de esta manera se repite el ciclo de la animacion
+            // pero en este caso, cuando bajamos el delta es negativo y hace que la operacion matematica de negativo y rompe la animacion
+
+            //scrollProgress.value = (scrollProgress.value + delta / 500f).coerceIn(0f, 1f)  De esta forma solo se repite la animacion sin repetir el ciclo de la animacion
+
+            //mientras sea mas pequeño el numero x en: delta / x, mas rapido sera el movimiento
+            //Para que la animacion no se repita, no se pone el operador de 1% que hace que cuando la animacion llegue a 1, regrese a 0.
+            //scrollProgress guarda el numero flotante que representa el progreso del scroll
+            //Se suma al progreso un valor proporcional al desplazamiento (delta), escalado por 1000f para que sea más pequeño.
+            //coerceIn es una función que asegura que un valor esté dentro de un rango específico, en este caso 0f y 1f.
 
             // return Offset(x = 0f, y =delta/2) //con esto se puede controlar cosas como que la lista se scrolea la mitad de lo que detecta la app al mover los dedos en la pantalla
             return Offset.Zero //esto hace que no cambie nada
@@ -101,6 +118,8 @@ fun FuncionParallaxUno(
             .nestedScroll(nestedScrollConnection),
         state = lazyListStateUno
     ) {
+
+
         items(count = 10) {
             Text(
                 text = "ObjetoEjemplo",
@@ -109,6 +128,7 @@ fun FuncionParallaxUno(
                     .padding(16.dp)
             )
         }
+
 
         item {
             Box(
@@ -181,19 +201,19 @@ fun FuncionParallaxUno(
                         translationY = gifPatoOffset
                     }
             )
-
             PruebaLottie(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(mapaMundiAltura)
-                    .graphicsLayer() {
+                    .graphicsLayer {
                         translationY = giftLottieUnoOffset
-                    }
-
+                    },
+                scrollProgress = scrollProgress.value
             )
 
 
         }
+
+
         items(count = 10) {
             Text(
                 text = "ObjetoEjemplo",
@@ -203,10 +223,27 @@ fun FuncionParallaxUno(
             )
 
         }
+
     }
+
 }
 
 private fun Float.toDp(): Dp {
     return (this / Resources.getSystem().displayMetrics.density).dp
 }//esto es para cambiar las cosas de pixel a dp
 
+/*detalle imporante:
+
+Controlar la velocidad con la fuerza del scroll
+El delta que se usa en onPreScroll es la distancia del scroll. Si se quiere usar como velocidad, eso es lo que se esta haciendo
+Pero se puede cambiar la velocidad con algo como:
+
+val speedFactor = abs(delta) / 1000f  // solo la magnitud sin signo
+scrollProgress.value = (scrollProgress.value + speedFactor) % 1f,
+Con lo anterior,  seria proporcional a la fuerza del scroll, no la velocidad que ponemos con el onPreScroll.
+
+
+
+Si queremos que la direccion importe, se usa
+scrollProgress.value = (scrollProgress.value + delta / 1000f) % 1f
+*/

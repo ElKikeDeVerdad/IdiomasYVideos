@@ -9,19 +9,16 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 @Composable
-fun PruebaLottie(modifier: Modifier = Modifier) {
+fun PruebaLottie(
+    modifier: Modifier = Modifier,
+    scrollProgress: Float) {
     val composition by rememberLottieComposition(LottieCompositionSpec.Asset("EVA.json")) //crea una composicion para poder meter varios lotties y que cargen todos juntos segun vayas poniendo lotties
-    val progress by animateLottieCompositionAsState(  //es lo que permite que la composicion se mueva dependiendo de las condiciones (parametros) que pongas
-        composition,
-        iterations = LottieConstants.IterateForever, //iteration es un parametro que dice cuantas veces el lottie se va a repetir, en este caso, para siempre
-        isPlaying = true
+
+    LottieAnimation(
+        composition = composition,
+        progress = {scrollProgress}, //Manejaremos este parametro en el paralax y no aqui
+        modifier =  modifier
     )
-//esto se llama Guard clause, evita errores y evita ejecutar codigo sin que se cumpla condiciones, en este caso se evita renderizar nada hasta que esté cargado correctamente. Para mas info buscar sobre guard clause
-    composition?.let {
-        LottieAnimation(
-            composition = it,
-            progress = { progress }, //es una animacion de estado, le da a Lottie una forma de saber el progreso animado en cada frame
-            modifier = modifier
-        )
-    }
+
+
 }
