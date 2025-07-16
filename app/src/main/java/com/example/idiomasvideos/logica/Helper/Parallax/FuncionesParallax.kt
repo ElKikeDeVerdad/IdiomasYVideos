@@ -36,6 +36,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.idiomasvideos.R
 import coil.decode.GifDecoder
+import com.example.idiomasvideos.logica.Helper.Imagenes.PruebaLottie
+
 
 @Composable
 fun FuncionParallaxUno(
@@ -46,6 +48,8 @@ fun FuncionParallaxUno(
     val perritoTristeScrollSpeed = 0.5f
 
     val gifPatoScrollSpeed = 3f
+
+    val gifLottieUnoSpeed = 1.5f
 
 
     val mapaMundiAltura =
@@ -62,7 +66,7 @@ fun FuncionParallaxUno(
 
     var gifPatoOffset by remember { mutableStateOf(0f) }
 
-    var webpAnimadoOffset by remember { mutableStateOf(0f) }
+    var giftLottieUnoOffset by remember { mutableStateOf(0f) }
 
     val nestedScrollConnection = object : NestedScrollConnection {
         override fun onPreScroll( //antes de que la funcion del scroll sea procesado, ocurrira esta funcion
@@ -84,7 +88,7 @@ fun FuncionParallaxUno(
             perritoFelizOffset += delta * perritoFelizScrollSpeed
             perritoTristeOffset += delta * perritoTristeScrollSpeed
             gifPatoOffset += delta * gifPatoScrollSpeed
-            webpAnimadoOffset += delta * 1.5f
+            giftLottieUnoOffset += delta * 1.5f
 
             // return Offset(x = 0f, y =delta/2) //con esto se puede controlar cosas como que la lista se scrolea la mitad de lo que detecta la app al mover los dedos en la pantalla
             return Offset.Zero //esto hace que no cambie nada
@@ -178,21 +182,15 @@ fun FuncionParallaxUno(
                     }
             )
 
-            /*  AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(R.drawable.)  // Carga tu archivo WebP animado aquí
-                    .build(),
-                contentDescription = "",
-                contentScale = ContentScale.FillWidth,
-                alignment = Alignment.BottomCenter,
+            PruebaLottie(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(mapaMundiAltura)
-                    .graphicsLayer {
-                        translationY = webpAnimadoOffset // Aplicamos el offset del scroll
+                    .graphicsLayer() {
+                        translationY = giftLottieUnoOffset
                     }
+
             )
-        */
 
 
         }

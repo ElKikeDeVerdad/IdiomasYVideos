@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.lottie.compose)
     implementation(libs.coil.gif)
     implementation(libs.coil.compose)
     implementation(libs.androidx.core.ktx)
