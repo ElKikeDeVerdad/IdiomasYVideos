@@ -11,16 +11,16 @@ import androidx.compose.foundation.lazy.items
 
 
     @Composable
-    fun GaleriaDeVideos(dataVideos: List<DataVideos>) {
-        LazyRow {
-            items(dataVideos) { videos ->
-                YoutubeVideo(
-                    videoId = videos.videoId,
-                    titulo = videos.titulo,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .width(200.dp)
-                )
+        fun GaleriaDeVideos(dataVideos: List<DataVideos>) {
+            LazyRow {
+                items(dataVideos) { videos ->
+                    YoutubeVideo(
+                        videoId = videos.videoId,
+                        titulo = videos.titulo,
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .width(200.dp)
+                    )
+                }
             }
-        }
     }

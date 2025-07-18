@@ -96,6 +96,8 @@ fun textoBodyPrueba() {
     Text(
         text = stringResource(R.string.bodyTexto),
         fontSize = 20.sp,
+
+
     )
 }
 

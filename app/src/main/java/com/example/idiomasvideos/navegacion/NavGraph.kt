@@ -76,7 +76,9 @@ fun AppNavGraph(
             exitTransition = TransicionZoom.zoomOutTransicion,
             popEnterTransition = TransicionZoom.zoomInTransicion,
             popExitTransition = TransicionZoom.zoomOutTransicion
-        ) {
+        )
+
+        {
             MostrarCirculoGrandeScreen(
                 navController = navController,
                 modifier = modifier
